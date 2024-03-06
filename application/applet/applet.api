@@ -8,8 +8,18 @@ type Response {
 	Message string `json:"message"`
 }
 
+type (
+	VerificationRequest {
+		Mobile string `json:"mobile"`
+	}
+	VerificationResponse  {}
+)
+
 service applet-api {
 	@handler AppletHandler
 	get /from/:name (Request) returns (Response)
+
+	@handler VerificationHandler
+	post /verification (VerificationRequest) returns (VerificationResponse)
 }
 

@@ -8,3 +8,10 @@ type Request struct {
 type Response struct {
 	Message string `json:"message"`
 }
+
+type VerificationRequest struct {
+	Mobile string `json:"mobile"`
+}
+
+type VerificationResponse struct {
+}

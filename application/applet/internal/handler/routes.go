@@ -17,6 +17,11 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Path:    "/from/:name",
 				Handler: AppletHandler(serverCtx),
 			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/verification",
+				Handler: VerificationHandler(serverCtx),
+			},
 		},
 	)
 }
