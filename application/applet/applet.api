@@ -9,10 +9,24 @@ type Response {
 }
 
 type (
+	Token {
+		AccessToken  string `json:"access_token"`
+		AccessExpire int64  `json:"access_expire"`
+	}
 	VerificationRequest {
 		Mobile string `json:"mobile"`
 	}
 	VerificationResponse  {}
+	RegisterRequest {
+		Name             string `json:"name"`
+		Mobile           string `json:"mobile"`
+		Password         string `json:"password"`
+		VerificationCode string `json:"berification_code"`
+	}
+	RegisterResponse {
+		UserId int64 `json:"user_id"`
+		Token  Token `json:"token"`
+	}
 )
 
 service applet-api {
@@ -21,5 +35,8 @@ service applet-api {
 
 	@handler VerificationHandler
 	post /verification (VerificationRequest) returns (VerificationResponse)
+
+	@handler RegisterHandler
+	post /register (RegisterRequest) returns (RegisterResponse)
 }
 
